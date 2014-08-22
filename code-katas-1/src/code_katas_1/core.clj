@@ -37,23 +37,20 @@
   [s]
   (if  (empty? s) (str)
 
-       (if (char? (first s))
+       (if (integer? (first s))
 
         (if (identical? (first s) (second s))
-          (str (compress-sequence (rest s)))
-          (str (first s) (compress-sequence (rest s)))
+          (compress-sequence (rest s))
+          (cons (first s) (compress-sequence (rest s)))
           )
 
         (if (identical? (first s) (second s))
-          (cons (compress-sequence (rest s)))
-          (cons (first s) (compress-sequence (rest s)))
+          (compress-sequence (rest s))
+          (str (first s) (compress-sequence (rest s)))
         )
-
        )
    )
 )
-
-
 
 
 
@@ -61,7 +58,12 @@
   "Escribir una funcion que reciba un numero variable de parametros
    y retorne el que tenga el valor mayor
    Restricciones: max y max-key"
-  [& args])
+  [& args]
+
+)
+
+
+
 
 (defn split-two
   "Escribir una funcion que parta una secuencia en dos partes
