@@ -9,20 +9,24 @@
 
 
 (defn nil-key
-   "Escribir una funcion que dada una clave y un mapa, devuelva true, solamente si el mapa
+ "Escribir una funcion que dada una clave y un mapa, devuelva true, solamente si el mapa
    contiene una entrada con esa clave, y su valor es nil"
-    [k m]
-    (and (not (nil? (some #(= k %) (keys m))))
-         (nil? (k m))))
+ [k m]
+ (if (and (contains? m k) (nil? (get m k))) true false)
+)
 
 
 
 
-(defn range
+
+(defn range-new
   "Escribir una funcion que cree una lista de enteros en un rango dado.
    Restricciones: range"
   [start end]
-  )
+  (if (= start end) () (cons start (range-new (+ start 1) end)))
+ )
+
+
 
 
 
