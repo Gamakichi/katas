@@ -39,12 +39,12 @@
 
        (if (integer? (first s))
 
-        (if (identical? (first s) (second s))
+        (if (= (first s) (second s))
           (compress-sequence (rest s))
           (cons (first s) (compress-sequence (rest s)))
           )
 
-        (if (identical? (first s) (second s))
+        (if (= (first s) (second s))
           (compress-sequence (rest s))
           (str (first s) (compress-sequence (rest s)))
         )
@@ -59,6 +59,7 @@
    y retorne el que tenga el valor mayor
    Restricciones: max y max-key"
   [& args]
+
 
 )
 
