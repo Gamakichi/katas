@@ -35,7 +35,23 @@
   "Escribir una funcion que elimine los duplicados consecutivos
    de una secuencia"
   [s]
-  )
+  (if  (empty? s) (str)
+
+       (if (char? (first s))
+
+        (if (identical? (first s) (second s))
+          (str (compress-sequence (rest s)))
+          (str (first s) (compress-sequence (rest s)))
+          )
+
+        (if (identical? (first s) (second s))
+          (cons (compress-sequence (rest s)))
+          (cons (first s) (compress-sequence (rest s)))
+        )
+
+       )
+   )
+)
 
 
 
