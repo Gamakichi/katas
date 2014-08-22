@@ -59,9 +59,11 @@
    y retorne el que tenga el valor mayor
    Restricciones: max y max-key"
   [& args]
-
-
+  (first (sort > args))
 )
+
+
+
 
 
 
