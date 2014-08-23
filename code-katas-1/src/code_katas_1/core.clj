@@ -102,7 +102,10 @@
    solamente si alguno de los parametros son true, pero no todos son true. En otro
    caso debera retornar false"
   [& xs]
+  (if (and (some true? xs) (some false? xs)) true false)
   )
+
+
 
 (defn zip-map
   "Escribir una funcion que reciba un vector de claves y un vector de valores, y
