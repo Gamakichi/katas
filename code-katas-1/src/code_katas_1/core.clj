@@ -19,11 +19,11 @@
 
 
 
-(defn range-new
+(defn range
   "Escribir una funcion que cree una lista de enteros en un rango dado.
    Restricciones: range"
   [start end]
-  (if (= start end) () (cons start (range-new (+ start 1) end)))
+  (if (= start end) () (cons start (range (+ start 1) end)))
  )
 
 
@@ -79,7 +79,8 @@
    luego el segundo de cada una, luego el tercero, etc.
    Restricciones: interleave"
   [s1 s2]
-
+  (if (or (empty? s1) (empty? s2)) ()
+      (cons (first s1) (cons (first s2) (inter-two (rest s1) (rest s2)))))
  )
 
 
