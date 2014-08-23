@@ -91,7 +91,11 @@
   "Escribir una funcion que reciba un string y devuelva un nuevo string conteniendo
    solamente las mayusculas."
   [text]
-  )
+  (if (empty? text) "nothing"
+      (apply str (filter #(Character/isUpperCase %) text)))
+)
+
+
 
 (defn find-truth
   "Escribir una funcion que tome un numero variable de booleans, y devuelva true
