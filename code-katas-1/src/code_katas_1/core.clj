@@ -4,7 +4,8 @@
   "Escribir una funcion que retorne solamente los numeros impares de
    una secuencia"
   [s]
-  (filter odd? s))
+  (filter odd? s)
+)
 
 
 
@@ -17,17 +18,13 @@
 
 
 
-
-
 (defn range
   "Escribir una funcion que cree una lista de enteros en un rango dado.
    Restricciones: range"
   [start end]
-  (if (= start end) () (cons start (range (+ start 1) end)))
- )
-
-
-
+  (if (= start end) () (cons start (range (+ start 1) end))
+  )
+)
 
 
 
@@ -35,23 +32,16 @@
   "Escribir una funcion que elimine los duplicados consecutivos
    de una secuencia"
   [s]
-  (if  (empty? s) (str)
+  (if (empty? s) (str)
 
-       (if (integer? (first s))
-
-        (if (= (first s) (second s))
-          (compress-sequence (rest s))
-          (cons (first s) (compress-sequence (rest s)))
-          )
-
-        (if (= (first s) (second s))
-          (compress-sequence (rest s))
-          (str (first s) (compress-sequence (rest s)))
-        )
-       )
-   )
+      (if (char? (first s)) (if (= (first s) (second s))
+                              (compress-sequence (rest s)) (str (first s) (compress-sequence (rest s))))
+          (if (= (first s) (second s))
+            (compress-sequence (rest s)) (cons (first s) (compress-sequence (rest s)))
+           )
+      )
+  )
 )
-
 
 
 (defn max-value
@@ -60,7 +50,7 @@
    Restricciones: max y max-key"
   [& args]
   (first (sort > args))
-)
+  )
 
 
 
@@ -69,7 +59,7 @@
   "Escribir una funcion que parta una secuencia en dos partes
    Restricciones: split-at"
   [length s]
-  (vector (vec (take length s)) (vec (drop length s)) )
+  (vector (vec (take length s)) (vec (drop length s)))
 )
 
 
@@ -80,10 +70,9 @@
    Restricciones: interleave"
   [s1 s2]
   (if (or (empty? s1) (empty? s2)) ()
-      (cons (first s1) (cons (first s2) (inter-two (rest s1) (rest s2)))))
- )
-
-
+      (cons (first s1) (cons (first s2) (inter-two (rest s1) (rest s2))))
+  )
+)
 
 
 
@@ -91,8 +80,9 @@
   "Escribir una funcion que reciba un string y devuelva un nuevo string conteniendo
    solamente las mayusculas."
   [text]
-  (if (empty? text) "nothing"
-      (apply str (filter #(Character/isUpperCase %) text)))
+   (if (empty? text) "nothing"
+      (apply str (filter #(Character/isUpperCase %) text))
+  )
 )
 
 
@@ -103,7 +93,7 @@
    caso debera retornar false"
   [& xs]
   (if (and (some true? xs) (some false? xs)) true false)
-  )
+)
 
 
 
@@ -112,4 +102,7 @@
    construya un mapa a partir de ellos.
    Restricciones: zipmap"
   [k v]
+  (if (or (empty? k) (empty? v)) {}
+      (into {} (map vec (partition 2 (interleave k v))))
   )
+)
