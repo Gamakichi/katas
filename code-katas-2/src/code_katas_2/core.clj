@@ -12,9 +12,10 @@
   "Dado un numero cualquiera de secuencias, cada una ya ordenada de menor a mayor, encontrar el numero
    mas chico que aparezca en todas las secuencias, las secuencias pueden ser infinitas."
   [& seqs]
-  (first (sort < (clojure.set/intersection (apply set args))))
+  (if (apply = (sort #(< %1 %2) (map first seqs))) (first (first seqs)) ())
+  )
 
-)
+
 
 
 (defn intercalar
@@ -22,6 +23,7 @@
    retorne una nueva coleccion donde el valor es insertado intercalado cada dos argumentos
    que cumplan el predicado"
   [predicado valor secuencia]
+
   )
 
 
