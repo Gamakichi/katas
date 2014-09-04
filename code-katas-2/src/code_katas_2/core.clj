@@ -23,12 +23,11 @@
    retorne una nueva coleccion donde el valor es insertado intercalado cada dos argumentos
    que cumplan el predicado"
   [predicado valor secuencia]
-
-  (if (nil? (first secuencia)) ()
-      (if (= (count secuencia) 1) (first secuencia)
-          (if (predicado (first secuencia) (second secuencia))
-            (concat (first secuencia) valor (intercalar predicado valor  (rest secuencia) ))
-            (concat (first secuencia) (intercalar predicado valor (rest secuencia)))))))
+  (lazy-seq
+   (if (or (nil? (first secuencia)) (= (count secuencia) 1)) secuencia
+       (if (predicado (first secuencia) (second secuencia))
+         (concat [(first secuencia)] [valor] (intercalar predicado valor (rest secuencia)))
+         (concat [(first secuencia)] (intercalar predicado valor (rest secuencia)))))))
 
 
 (defn tartamudeo
