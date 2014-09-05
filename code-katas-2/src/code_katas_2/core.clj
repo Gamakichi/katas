@@ -12,8 +12,11 @@
   "Dado un numero cualquiera de secuencias, cada una ya ordenada de menor a mayor, encontrar el numero
    mas chico que aparezca en todas las secuencias, las secuencias pueden ser infinitas."
   [& seqs]
-  (if (apply = (sort #(< %1 %2) (map first seqs))) (first (first seqs)) ())
-  )
+  (if (apply = (map first seqs)) (ffirst seqs) ())
+  (fn [s]
+   (let [a (first (map first s)) b (rest (map first s))]))
+)
+
 
 
 
@@ -24,7 +27,7 @@
    que cumplan el predicado"
   [predicado valor secuencia]
   (lazy-seq
-   (if (or (nil? (first secuencia)) (= (count secuencia) 1)) secuencia
+   (if (or (nil? (first secuencia)) (empty? (rest secuencia))) secuencia
        (if (predicado (first secuencia) (second secuencia))
          (concat [(first secuencia)] [valor] (intercalar predicado valor (rest secuencia)))
          (concat [(first secuencia)] (intercalar predicado valor (rest secuencia)))))))
